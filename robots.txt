@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tasjararhelchen.github.io/indexapp-i-game-com-cn/sitemap.xml

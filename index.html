@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 站点介绍与可信说明</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f2f4f7;
+      color: #1e2a3a;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    /* hero 简易区，不重复大 banner */
+    .intro-ribbon {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2.5rem 2.2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e9edf2;
+    }
+    .intro-ribbon h1 {
+      font-size: 2.1rem;
+      font-weight: 550;
+      letter-spacing: -0.02em;
+      color: #0b1c2e;
+      margin-bottom: 0.6rem;
+    }
+    .intro-ribbon p {
+      font-size: 1.05rem;
+      color: #2f4054;
+      max-width: 780px;
+    }
+    .intro-ribbon .tagline {
+      display: inline-block;
+      margin-top: 0.5rem;
+      background: #eef1f6;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      color: #2b4a6b;
+      border: 1px solid #dce2ea;
+    }
+
+    /* 卡片式目录网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.6rem;
+      margin-bottom: 2rem;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.8rem 1.6rem;
+      border: 1px solid #e4e9f0;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+      transition: box-shadow 0.2s ease;
+    }
+    .card:hover {
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+    }
+    .card h2 {
+      font-size: 1.25rem;
+      font-weight: 530;
+      margin-bottom: 0.7rem;
+      border-left: 4px solid #7289a7;
+      padding-left: 0.75rem;
+      color: #162b3f;
+    }
+    .card p, .card ul {
+      font-size: 0.96rem;
+      color: #2d4057;
+    }
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .card li {
+      padding: 0.3rem 0 0.3rem 1.2rem;
+      position: relative;
+    }
+    .card li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #5a7a9c;
+    }
+
+    /* 提示区 + 相关信息 用横向双列 */
+    .double-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.6rem;
+      margin-bottom: 2rem;
+    }
+    .double-section > * {
+      flex: 1 1 260px;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.6rem 1.6rem;
+      border: 1px solid #e4e9f0;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+    }
+    .double-section h3 {
+      font-size: 1.1rem;
+      font-weight: 520;
+      margin-bottom: 0.6rem;
+      color: #1d3145;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .double-section h3::before {
+      content: "📌";
+      font-size: 1.2rem;
+    }
+    .double-section .info-box h3::before {
+      content: "ℹ️";
+    }
+    .double-section p, .double-section li {
+      font-size: 0.94rem;
+      color: #2d4057;
+    }
+    .double-section ul {
+      list-style: none;
+      padding-left: 0.2rem;
+    }
+    .double-section li {
+      padding: 0.2rem 0;
+    }
+
+    /* faq 摘要用紧凑卡片 */
+    .faq-mini {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.6rem 1.8rem;
+      border: 1px solid #e4e9f0;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+      margin-bottom: 2rem;
+    }
+    .faq-mini h3 {
+      font-size: 1.15rem;
+      font-weight: 530;
+      margin-bottom: 1rem;
+      color: #1d3145;
+      border-bottom: 1px solid #e5eaf1;
+      padding-bottom: 0.5rem;
+    }
+    .faq-item {
+      margin-bottom: 0.9rem;
+    }
+    .faq-item strong {
+      display: block;
+      font-weight: 520;
+      color: #1e344a;
+      margin-bottom: 0.15rem;
+    }
+    .faq-item p {
+      font-size: 0.92rem;
+      color: #3b4f65;
+      margin-left: 0.2rem;
+    }
+
+    /* 页脚 / 可信说明 */
+    .footer-note {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.4rem 2rem;
+      border: 1px solid #e4e9f0;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      color: #3d546c;
+      text-align: center;
+    }
+    .footer-note a {
+      color: #1d4b77;
+      text-decoration: none;
+      font-weight: 480;
+    }
+    .footer-note a:hover {
+      text-decoration: underline;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 600px) {
+      body { padding: 1.2rem 0.8rem; }
+      .intro-ribbon { padding: 1.8rem 1.2rem; }
+      .intro-ribbon h1 { font-size: 1.6rem; }
+      .card { padding: 1.4rem 1.2rem; }
+      .double-section > * { padding: 1.3rem; }
+      .faq-mini { padding: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- hero/站点说明 -->
+  <div class="intro-ribbon">
+    <h1>爱游戏 · 索引与知识库</h1>
+    <p>这是一个以信息聚合与可信指引为出发点的轻量站点。不同于传统的游戏门户，<strong>爱游戏</strong>更倾向于提供结构化的内容目录、场景说明与背景参考，帮助使用者更清晰地理解平台定位与可用素材。</p>
+    <span class="tagline">📁 目录感布局 · 可信说明入口</span>
+  </div>
+
+  <!-- 卡片网格：介绍 + 特点 + 场景 -->
+  <div class="card-grid">
+    <div class="card">
+      <h2>站点介绍</h2>
+      <p>“爱游戏” 并非单一功能的游戏平台，而是一个面向游戏内容索引与轻量知识整理的集合页。通过卡片式分区与简洁的说明，使用者可以快速了解当前站点所涵盖的领域、内容组织方式以及信息获取路径。整体设计以中性、清晰为基调，不堆砌复杂交互，突出可读性。</p>
+    </div>
+    <div class="card">
+      <h2>内容特点</h2>
+      <ul>
+        <li>分区明确：每个卡片对应一个知识或说明维度</li>
+        <li>低噪设计：减少无关干扰，突出文字与结构</li>
+        <li>来源透明：不隐瞒信息出处，不虚构功能</li>
+        <li>持续迭代：页面结构会随内容积累而调整</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>适用场景</h2>
+      <p>当你需要快速了解“爱游戏”所包含的信息模块、检查内容可信度或寻找特定说明区域时，该页面可作为导航起点。适合新访客初次了解，也适合老用户快速定位更新部分。</p>
+    </div>
+  </div>
+
+  <!-- 双列：提示区 + 相关信息 -->
+  <div class="double-section">
+    <div class="tip-box">
+      <h3>提示区</h3>
+      <p>本页面所有内容均基于可查证的信息整理，不包含隐藏推广或诱导跳转。如果你需要访问<strong>爱游戏</strong>的主页或了解更多背景，可以通过下方链接直接前往该站点。</p>
+      <p style="margin-top: 0.6rem;">建议在阅读各部分卡片后，再结合站点内实际模块进行对照，以获取更完整的认知。</p>
+    </div>
+    <div class="info-box">
+      <h3>相关信息</h3>
+      <ul>
+        <li>页面类型：索引/介绍型</li>
+        <li>内容侧重：站点说明 · 可信提示</li>
+        <li>更新记录：以季度为单位进行内容复核</li>
+        <li>反馈渠道：暂未设立独立反馈入口，可参考站点内联系方式</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-mini">
+    <h3>FAQ 摘要</h3>
+    <div class="faq-item">
+      <strong>“爱游戏” 收录哪些内容？</strong>
+      <p>主要涵盖游戏相关索引、背景知识及工具参考。不包含第三方下载链接或未授权资源。</p>
+    </div>
+    <div class="faq-item">
+      <strong>页面信息可信吗？</strong>
+      <p>所有描述均基于站点现有结构与公开信息。不编造数据，不夸大功能。建议以实际页面为准。</p>
+    </div>
+    <div class="faq-item">
+      <strong>如何进一步了解？</strong>
+      <p>你可以直接访问 <a href="https://indexapp-i-game.com.cn">爱游戏</a> 并浏览各分区。本站点作为补充说明页，不替代主站功能。</p>
+    </div>
+  </div>
+
+  <!-- 页脚：自然嵌入链接 + 可信说明 -->
+  <div class="footer-note">
+    <p>本介绍页面为独立索引说明，与主站 <a href="https://indexapp-i-game.com.cn">爱游戏</a> 相互补充。内容保持克制、真实，不包含未经验证的主张。建议将本页作为了解该站点的辅助参考。</p>
+  </div>
+
+</div>
+</body>
+</html>
