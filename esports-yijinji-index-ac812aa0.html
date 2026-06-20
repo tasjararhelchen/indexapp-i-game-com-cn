@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一竞技 · 资料索引 · 知识库入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f4f7;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e2a3a;
+            line-height: 1.7;
+            padding: 2rem 1.2rem;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 目录感网格 */
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: #3b4a5c;
+            background: #e9edf2;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+            letter-spacing: 0.3px;
+            margin-bottom: 1.8rem;
+            border: 1px solid #d7dde5;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #121926;
+            margin-bottom: 0.6rem;
+        }
+
+        .subhead {
+            font-size: 1.05rem;
+            color: #3f4d62;
+            border-left: 3px solid #8395a8;
+            padding-left: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin: 2.2rem 0 1.2rem 0;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid #d1d9e2;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title span {
+            background: #dce3ec;
+            font-size: 0.8rem;
+            padding: 0.1rem 0.7rem;
+            border-radius: 30px;
+            color: #1e2a3a;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0 2rem 0;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #dde3ea;
+            border-radius: 18px;
+            padding: 1.3rem 1.2rem 1.2rem 1.2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.04);
+            transition: box-shadow 0.15s, transform 0.1s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.06);
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            color: #1e2a3a;
+        }
+
+        .card .meta {
+            font-size: 0.8rem;
+            color: #68778c;
+            background: #f0f3f7;
+            display: inline-block;
+            padding: 0 0.6rem;
+            border-radius: 40px;
+            margin-bottom: 0.6rem;
+        }
+
+        .card p {
+            color: #2b3a4c;
+            font-size: 0.95rem;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: #eef2f8;
+            font-size: 0.75rem;
+            padding: 0.15rem 0.7rem;
+            border-radius: 20px;
+            color: #2a4058;
+            border: 1px solid #d5dee8;
+            margin-top: 0.5rem;
+        }
+
+        .info-block {
+            background: #ffffff;
+            border: 1px solid #dde3ea;
+            border-radius: 20px;
+            padding: 1.6rem 1.8rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            margin: 2rem 0;
+        }
+
+        .info-block p {
+            margin-bottom: 0.8rem;
+        }
+
+        .info-block strong {
+            color: #121926;
+        }
+
+        .tip-box {
+            background: #f7f9fc;
+            border-left: 4px solid #8499b3;
+            padding: 1.2rem 1.4rem;
+            border-radius: 0 20px 20px 0;
+            margin: 1.8rem 0;
+            border: 1px solid #e2e8f0;
+            border-left-width: 5px;
+        }
+
+        .tip-box .label {
+            font-weight: 500;
+            color: #1f3349;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.75rem;
+        }
+
+        .faq-mini {
+            margin: 2.2rem 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #dae1e9;
+            padding: 0.8rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 500;
+            color: #1a2b3e;
+        }
+
+        .faq-a {
+            color: #38506b;
+            font-size: 0.95rem;
+            margin-top: 0.2rem;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #d2dbe5;
+            font-size: 0.9rem;
+            color: #4d627a;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .inline-link {
+            color: #1e3c5a;
+            text-decoration: none;
+            font-weight: 450;
+            border-bottom: 1px dotted #a0b5cb;
+        }
+
+        .inline-link:hover {
+            border-bottom: 2px solid #1e3c5a;
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 1.2rem; }
+            h1 { font-size: 1.8rem; }
+            .card-grid { grid-template-columns: 1fr; }
+            .info-block { padding: 1.2rem; }
+        }
+
+        @media (min-width: 800px) {
+            .card-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <div class="hero-tagline">📁 资料索引 · 知识库入口</div>
+    <h1>一竞技 · 信息整理与参考</h1>
+    <div class="subhead">
+        从赛事资料到生态说明，搭建一个轻量的信息聚合起点。
+    </div>
+
+    <!-- 目录感卡片区：类似索引卡片 -->
+    <div class="card-grid">
+        <div class="card">
+            <span class="meta">📄 说明</span>
+            <h3>平台资料概况</h3>
+            <p>围绕竞技内容整理的基础文件与公开说明，涵盖赛事结构、合作方式与常见名词。适合新接触的用户建立初步认识。</p>
+            <span class="tag">资料卡</span>
+        </div>
+        <div class="card">
+            <span class="meta">🧭 指引</span>
+            <h3>信息索引路径</h3>
+            <p>从新手指引到进阶参考，按主题划分的目录式汇总。每份材料均标注版本与摘要，方便快速定位所需内容。</p>
+            <span class="tag">分类 · 索引</span>
+        </div>
+        <div class="card">
+            <span class="meta">📌 提示</span>
+            <h3>查阅注意事项</h3>
+            <p>部分文档为阶段性整理，建议结合官方更新核对。信息引用请标注来源，保持公开资料的可追溯性。</p>
+            <span class="tag">使用提醒</span>
+        </div>
+    </div>
+
+    <!-- 说明区 -->
+    <div class="info-block">
+        <p><strong>关于本页 · 资料整理背景</strong></p>
+        <p>这个页面是为方便整理与<a href="https://esports-yijinji.com" class="inline-link">一竞技</a>相关的公开信息而设立的索引入口。内容来源于日常收集与归纳，偏向于知识库的呈现方式。你可以把它看作一个目录——从这里开始，按需查找说明、规则或者背景资料。我们不生产原始规则，但尝试把零散的信息梳拢成更容易翻阅的结构。</p>
+        <p>如果你希望直接浏览赛事、活动或最新的官方细节，可以前往<a href="https://esports-yijinji.com" class="inline-link">一竞技</a>站点查看一手资料。这里更多承担的是“参考书架”的角色。</p>
+    </div>
+
+    <!-- 提示区 -->
+    <div class="tip-box">
+        <div class="label">📘 使用提示</div>
+        <p style="margin-bottom: 0.2rem;">· 资料卡片中的内容均基于公开渠道整理，不包含未披露或非公开信息。<br>
+        · 部分说明可能存在时效差异，建议交叉核对官方动态。<br>
+        · 本页为静态索引，不设自动同步，最后更新以页面底部标注为准。<br>
+        · 如需转载或引用资料内容，请保持上下文完整，避免断章取义。</p>
+    </div>
+
+    <!-- FAQ 摘要区 -->
+    <div class="faq-mini">
+        <div class="section-title">
+            ❔ 常见信息问答 <span>摘要</span>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">问：从哪里可以了解一竞技的基本规则？</div>
+            <div class="faq-a">答：可以在 <a href="https://esports-yijinji.com" class="inline-link">一竞技</a> 的“资料”或“帮助”板块中找到官方说明，本站索引也收录了部分相关文档的摘要与链接。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">问：信息索引多久更新一次？</div>
+            <div class="faq-a">答：目前为手动整理，更新节奏不定。若有明显变动会尽量补充，但不承诺实时同步。建议以官方渠道为准。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">问：页面中的卡片和提示是否可以转载？</div>
+            <div class="faq-a">答：本页内容本身为公开整理，可以引用，但请勿用于误导或歪曲。涉及一竞技的正式内容请参考其官方发布。</div>
+        </div>
+    </div>
+
+    <!-- 相关信息区 -->
+    <div class="info-block" style="margin-top: 0.5rem;">
+        <p><strong>相关信息 · 你可能还想了解</strong></p>
+        <p>🔹 平台术语对照 &nbsp;·&nbsp; 🔹 赛事阶段说明 &nbsp;·&nbsp; 🔹 常见名词辨析<br>
+        🔹 合作与接入指引 &nbsp;·&nbsp; 🔹 数据统计参考 &nbsp;·&nbsp; 🔹 版本更新记录</p>
+        <p style="margin-top: 0.6rem; font-size: 0.9rem; color: #3a506b;">以上内容均可通过 <a href="https://esports-yijinji.com" class="inline-link">一竞技</a> 索引页或相关分类找到更详细的版本。</p>
+    </div>
+
+    <div class="footer-note">
+        <span>📆 页面版本：2025 · 资料索引型</span>
+        <span>遵循开放知识库风格 · 非官方页面</span>
+    </div>
+
+</div>
+</body>
+</html>
