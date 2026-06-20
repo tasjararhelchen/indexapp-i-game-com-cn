@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>球友直播 · 简明指南与访问提醒</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+      background: #faf7f2;
+      color: #2c2c2c;
+      line-height: 1.6;
+      padding: 0 1rem;
+    }
+
+    .page {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 2.5rem 0 4rem;
+    }
+
+    /* === hero banner === */
+    .hero {
+      background: #f0ebe3;
+      border-radius: 24px;
+      padding: 2.8rem 2.2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e9dfd3;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #3a322b;
+      margin-bottom: 0.6rem;
+      line-height: 1.25;
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #6e5e4c;
+      max-width: 480px;
+      border-left: 3px solid #c7b09a;
+      padding-left: 1.2rem;
+      margin-top: 0.4rem;
+    }
+
+    /* 背景说明卡片 */
+    .context-note {
+      background: #f4efe8;
+      border-radius: 18px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2.8rem;
+      border: 1px solid #e2d5c8;
+      font-size: 0.98rem;
+      color: #4e4238;
+    }
+
+    .context-note strong {
+      color: #3e2f24;
+      font-weight: 600;
+    }
+
+    /* 三段自然介绍 —— 使用文章排版 */
+    .intro-section {
+      margin-bottom: 3rem;
+    }
+
+    .intro-section article {
+      margin-bottom: 2.4rem;
+      padding-bottom: 1.8rem;
+      border-bottom: 1px dashed #ddd3c7;
+    }
+
+    .intro-section article:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .intro-section h2 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #3d352e;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.02em;
+    }
+
+    .intro-section p {
+      font-size: 1rem;
+      color: #3f3a35;
+      margin-bottom: 0.5rem;
+    }
+
+    .intro-section p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* 引用块 / 提示框 */
+    .callout-box {
+      background: #f1e9df;
+      border-left: 5px solid #bea68a;
+      padding: 1.4rem 1.8rem;
+      border-radius: 12px;
+      margin: 2.2rem 0;
+      font-size: 0.98rem;
+      color: #3d352a;
+    }
+
+    .callout-box .callout-title {
+      font-weight: 600;
+      color: #4f3f2e;
+      margin-bottom: 0.3rem;
+      font-size: 1.05rem;
+    }
+
+    /* FAQ摘要卡片 */
+    .faq-summary {
+      background: #f6f2ec;
+      border-radius: 18px;
+      padding: 1.8rem 2.2rem;
+      margin: 3rem 0 2.2rem;
+      border: 1px solid #e3d8cd;
+    }
+
+    .faq-summary h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #3f352b;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #e4dbd0;
+    }
+
+    .faq-item:last-of-type {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .faq-item .q {
+      font-weight: 500;
+      color: #3f3226;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item .a {
+      color: #5f5143;
+      font-size: 0.95rem;
+    }
+
+    /* 页尾访问提示 */
+    .footer-note {
+      border-top: 1px solid #e3d7ca;
+      margin-top: 4rem;
+      padding-top: 2.2rem;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #6d5f50;
+    }
+
+    .footer-note a {
+      color: #4d3c2b;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #b8a692;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .footer-note a:hover {
+      border-bottom-color: #4d3c2b;
+      color: #2b221b;
+    }
+
+    .footer-note .small-hint {
+      display: block;
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+      color: #968677;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 600px) {
+      .hero {
+        padding: 1.8rem 1.4rem;
+      }
+
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+
+      .hero .sub {
+        font-size: 0.95rem;
+        padding-left: 0.9rem;
+      }
+
+      .context-note,
+      .callout-box,
+      .faq-summary {
+        padding: 1.3rem 1.2rem;
+      }
+
+      .intro-section h2 {
+        font-size: 1.25rem;
+      }
+
+      .footer-note {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      body {
+        padding: 0 0.6rem;
+      }
+
+      .page {
+        padding: 1.2rem 0 3rem;
+      }
+
+      .hero {
+        border-radius: 18px;
+        padding: 1.3rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- 首页横幅 hero -->
+    <div class="hero">
+      <h1>球友直播 · 一份简明指南</h1>
+      <div class="sub">日常陪伴，真实连接——把注意力放在喜欢的内容上。</div>
+    </div>
+
+    <!-- 背景说明 -->
+    <div class="context-note">
+      <strong>关于这个页面</strong> —— 很多人第一次接触<strong>球友直播</strong>时，会好奇它究竟提供怎样的体验。这里没有复杂的术语，只是从普通人的视角，聊一聊访问时值得留意的几个细节，以及如何更顺畅地找到自己感兴趣的内容。
+    </div>
+
+    <!-- 三段自然介绍 -->
+    <div class="intro-section">
+
+      <article>
+        <h2>从直播中感受节奏</h2>
+        <p>每一场直播都有自己的氛围和节奏。有人喜欢热闹的聊天，有人习惯安静地看画面。在<a href="https://cn-index-qiuyou.com">球友直播</a>，你不需要刻意迎合谁，随时可以进来看看，也随时可以离开。这种不打扰的观看方式，让体验变得很轻。</p>
+        <p>如果你刚接触这类直播，不妨先花几分钟熟悉界面：哪里显示房间列表，怎样切换清晰度，以及如何调整音量。这些细节虽然基础，但提前了解会让人更自在。</p>
+      </article>
+
+      <article>
+        <h2>场景与选择</h2>
+        <p>无论你是在通勤路上，还是休息前想放松一下，直播内容的选择都可以很个人。体育赛事、兴趣闲聊、技能分享…… 不同时段有不同主题。建议根据自己当下的心情挑选，不必追求“必须看完”。</p>
+        <p>另外，网络稳定与否直接影响观看体验。如果遇到卡顿，可以先检查一下自己的连接，或者稍后再回来。好内容不会溜走，只是换一个时间相遇。</p>
+      </article>
+
+      <article>
+        <h2>让访问成为习惯</h2>
+        <p>直播的魅力有一部分来自它的不确定性——你不知道下一秒主播会聊什么，或者会有什么即兴互动。这种真实的张力，恰恰是录播和点播很难替代的。把<a href="https://cn-index-qiuyou.com">球友直播</a>放进浏览器的书签夹里，或者记住它的名字，就像记住一个随时可以推开门的房间。</p>
+        <p>没有强制登录，没有复杂注册，直接访问就可以看到当前正在发生的事情。这种低门槛正是它最自然的样貌。</p>
+      </article>
+
+    </div>
+
+    <!-- 引用块 / 提示框 -->
+    <div class="callout-box">
+      <div class="callout-title">💡 访问提醒</div>
+      <p>使用公共网络时，注意个人信息保护。直播过程中如有互动功能，请理性发言。保持礼貌与尊重，是愉快观看的基础。另外，建议使用最新版浏览器访问，以获得更完整的页面支持。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-summary">
+      <h3>❓ 常见问题摘要</h3>
+      <div class="faq-item">
+        <div class="q">是否需要注册账号？</div>
+        <div class="a">不需要。直接打开页面即可观看当前直播内容。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">移动端能正常使用吗？</div>
+        <div class="a">可以，手机和平板浏览器均可访问。建议保持横屏或竖屏根据内容自行调节。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">如果遇到无法加载的情况？</div>
+        <div class="a">请先检查网络，再尝试刷新。部分地区可能需要更稳定的连接环境。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">内容是否面向所有年龄段？</div>
+        <div class="a">平台内容以普通直播为主，但仍建议未成年人在监护人陪同下使用。</div>
+      </div>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+      <p>想要了解更多？你可以直接从浏览器访问 <a href="https://cn-index-qiuyou.com">球友直播</a>，看看当下正在发生什么。</p>
+      <span class="small-hint">无需注册，打开即看。祝你观看愉快。</span>
+    </div>
+
+  </div>
+</body>
+</html>
